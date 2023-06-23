@@ -1,25 +1,37 @@
 import WebSocket from 'ws';
+import { GetFullUserMessage } from './message_funcs';
+import { AUTH_TOKEN } from './globals';
 
-const ConnectToChannel = () => {
-  const tc = new WebSocket('ws://irc-ws.chat.twitch.tv:80');
+type ConnectionProps = {
+  channelName: string;
+};
 
-  tc.on('error', console.error);
+const TwitchListener = new WebSocket('ws://irc-ws.chat.twitch.tv:80');
 
-  tc.on('open', () => {
-    console.log('< Conntection opened');
+const ConnectToChannel = (channelName: string) => {
+  TwitchListener.on('error', console.error);
+
+  TwitchListener.on('open', () => {
+    console.log('< Connection opened');
   });
 
-  tc.on('open', () => {
-    tc.send('PASS oauth:uwvls0lp010lgm9zlb1k1ina35tfng');
-    tc.send('NICK lol');
-    tc.send('JOIN #bratishkinoff');
+  TwitchListener.on('open', () => {
+    TwitchListener.send('PASS ' + AUTH_TOKEN);
+    TwitchListener.send('NICK lol');
+    TwitchListener.send('JOIN #' + channelName);
   });
 
-  tc.on('message', (data) => {
-    console.log('> %s', data);
+  TwitchListener.on('message', (data) => {
+    const currDate = new Date();
+    const strData = data.toString();
+    if (strData.includes('PING')) {
+      console.log('> Gotten PONGed');
+      TwitchListener.send('PONG');
+    }
+    console.log('> ' + currDate.toLocaleString() + GetFullUserMessage(strData));
   });
 
-  tc.on('close', () => {
+  TwitchListener.on('close', () => {
     console.log('< Closed');
   });
 };
