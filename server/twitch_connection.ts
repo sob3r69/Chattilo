@@ -1,5 +1,5 @@
 import WebSocket from 'ws';
-import { GetFullUserMessage } from './message_funcs';
+import { GetFullUserMessage } from '../functions/message_funcs';
 import { AUTH_TOKEN } from './globals';
 
 type ConnectionProps = {
