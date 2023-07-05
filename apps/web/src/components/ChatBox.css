@@ -1,0 +1,15 @@
+.chat-box {
+  flex-grow: 1;
+  background: black;
+  color: white;
+  border-radius: 8px;
+}
+
+.chat-header {
+  background: purple;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+}

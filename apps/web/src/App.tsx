@@ -1,13 +1,12 @@
 import ChatsField from './components/ChatsField';
 import SideBar from './components/SideBar';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <div className="flex flex-row h-screen w-screen">
-        <SideBar />
-        <ChatsField />
-      </div>
+    <div className="App">
+      <SideBar />
+      <ChatsField />
     </div>
   );
 }

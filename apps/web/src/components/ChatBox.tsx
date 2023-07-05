@@ -1,9 +1,12 @@
+import IconButton from './Buttons/IconButton';
+import './ChatBox.css';
+import { RxOpenInNewWindow } from 'react-icons/rx';
 const ChatBox = () => {
   return (
-    <div className="flex-grow bg-black text-white rounded">
-      <div className="flex flex-row justify-between w-full bg-purple-800 text-center p-1 rounded-t">
-        <button>O</button>
-        <p>Channel Name</p>
+    <div className="chat-box">
+      <div className="chat-header">
+        <IconButton Icon={RxOpenInNewWindow} />
+        <h3>Channel Name</h3>
         <button>X</button>
       </div>
     </div>

@@ -1,5 +1,7 @@
+import './SideBar.css';
+
 const SideBar = () => {
-  return <div className="h-full w-24 bg-purple-800"></div>;
+  return <div className="sidebar"></div>;
 };
 
 export default SideBar;

@@ -1,12 +1,13 @@
+import './ChatsField.css';
 import ChatBox from './ChatBox';
 
 const ChatsField = () => {
   return (
-    <div className="w-full h-full flex flex-row gap-2 p-2">
+    <div className="chats-field">
       <ChatBox />
-      <ChatBox />
-      <ChatBox />
-      <ChatBox />
+      {/* <ChatBox /> */}
+      {/* <ChatBox /> */}
+      {/* <ChatBox /> */}
     </div>
   );
 };
